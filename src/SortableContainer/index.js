@@ -122,6 +122,7 @@ export default function sortableContainer(
     }
 
     handleStart = (event) => {
+      console.log('handleStart');
       const {distance, shouldCancelStart} = this.props;
 
       if (event.button === 2 || shouldCancelStart(event)) {
@@ -180,7 +181,7 @@ export default function sortableContainer(
 
     handleMove = (event) => {
       const {distance, pressThreshold} = this.props;
-
+      console.log('handleMove');
       if (
         !this.state.sorting &&
         this.touched &&
@@ -209,6 +210,7 @@ export default function sortableContainer(
     };
 
     handleEnd = () => {
+      console.log('handleEnd');
       this.touched = false;
       this.cancel();
     };
@@ -227,7 +229,7 @@ export default function sortableContainer(
 
     handlePress = async (event) => {
       const active = this.manager.getActive();
-
+      console.log('press');
       if (active) {
         const {
           axis,
@@ -645,9 +647,9 @@ export default function sortableContainer(
 
         // For keyboard sorting, we want user input to dictate the position of the nodes
         const mustShiftBackward =
-          isKeySorting && (index > this.index && index <= prevIndex);
+          isKeySorting && index > this.index && index <= prevIndex;
         const mustShiftForward =
-          isKeySorting && (index < this.index && index >= prevIndex);
+          isKeySorting && index < this.index && index >= prevIndex;
 
         const translate = {
           x: 0,
